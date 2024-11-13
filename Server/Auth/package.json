@@ -1,10 +1,11 @@
 {
-  "name": "GatewayApi",
-  "version": "0.0.0",
-  "main": "index.js",
+  "name": "AuthApi",
+  "version": "1.0.0",
+  "main": "app.js",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2"
   },
-  "type": "module"
+  "type": "commonjs"
 }
