@@ -9,9 +9,9 @@ exports.create_post = (req, res) => {
         user.createPost({
             title: req.body.title,
             content: req.body.content
-        }).catch(err => res.status(400).json('Error: ' + err));
+        }).then(post => res.status(201).json(post)).catch(err => res.status(500).json('Error: ' + err));
     })
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(500).json('Error: ' + err));
 }
 
 exports.get_post_by_id = (req, res) => {

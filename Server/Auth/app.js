@@ -1,8 +1,10 @@
 const express = require("express");
 var bodyparser=require('body-parser');
+const axios = require("axios").defaults;
 
 const app = express();
 
+app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
 
 const sign_up_router = require("./routes/sign_up_routes.js");

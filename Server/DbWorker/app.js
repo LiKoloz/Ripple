@@ -3,10 +3,11 @@ const express = require("express");
 var bodyparser=require('body-parser');
 const app = express();
 
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
+
 const user_router = require("./routes/user_router.js");
 const post_router = require("./routes/post_router.js");
-
-app.use(bodyparser.json());
 
 app.use("/users", user_router);
 app.use("/posts", post_router);

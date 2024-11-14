@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const axios = require("../custom_axios");
 
 exports.get_user_by_id = (req, res) => {
     jwt.verify(req.body.token, "secret",async (err, token) => {
@@ -27,20 +28,25 @@ exports.get_user_by_email = (req, res) => {
 }
 
 exports.sign_in_default = async (req, res) => {
-    const request = await fetch("http://localhost:3001/sign_in/default", {
-        method: "POST",
-        body: JSON.stringify(req.body)
+    axios.post("http://localhost:3001/sign_in/default", req.body)
+    .then((response) => {
+        console.log('Responce data \n' + response.data);
+        res.status(200).json(response.body);
     })
-    const user = await request.json();
-
-    if(user) res.status(200).json(user);
+    .catch(err => {
+        console.log(err)
+        res.status(500).json(err)
+    })
 }
 
 exports.sign_up_default = async (req, res) => {
-    const request = await fetch("http://localhost:3001/sign_up/default", {
-        method: "POST",
-        body: JSON.stringify(req.body)
-    })
-    const user = await request.json();
-    res.status(200).json(user);
+    axios.post("http://localhost:3001/sign_up/default", req.body)
+        .then((response) => {
+            console.log('Responce data \n' + response.data);
+            res.status(200).json(response.body);
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        });
 }

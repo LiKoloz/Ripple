@@ -1,22 +1,41 @@
 const jwt = require("jsonwebtoken");
+const axios = require("../custom_axios");
 
 exports.get_post_by_id = async (req, res) => {
-        let request = await fetch("http://localhost:3002/posts/get/" + req.params.id);
-        let post = await request.json();
-        res.status(200).json(post);
+        axios.get("http://localhost:3002/posts/get/" + req.params.id)
+        .then((response) => {
+            let post = response.data;
+            console.log('Responce data \n' + post);
+            res.status(200).json(post);
+        })
+        .catch(err => {
+            console.log("Error \n" + err);
+            res.status(500).json(err);
+        })
 }
 
 exports.get_posts_by_user_id = async (req, res) => {
-        let request = await fetch("http://localhost:3002/posts/get/u/" + req.params.id);
-        let posts = await request.json();
-        res.status(200).json(posts);
+        axios.get("http://localhost:3002/posts/get/u/" + req.params.id)
+        .then((response) => {
+            let posts = response.data;
+            console.log('Responce data \n' + posts);
+            res.status(200).json(posts);
+        })
+        .catch(err => {
+                console.log("Error \n" + err);
+                res.status(500).json(err);
+        })
 }
 
 exports.create_post = async (req, res) => {
-        let request = await fetch("http://localhost:3002/posts/create", {
-            method: "POST",
-            body: JSON.stringify(req.body)
+        axios.post("http://localhost:3002/posts/create", req.body)
+        .then((response) => {
+            let post = response.data;
+            console.log('Responce data \n' + post);
+            res.status(200).json(post);
         })
-        let post = await request.json();
-        res.status(200).json(post);
+        .catch(err => {
+            console.log("Error \n" + err);
+            res.status(500).json(err);
+        })
 }
