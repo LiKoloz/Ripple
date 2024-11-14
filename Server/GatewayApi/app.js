@@ -4,6 +4,7 @@ const bodyparser = require("body-parser");
 const app = express();
 
 app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
 
 const user_router = require("./routes/user_routes.js");
 const post_router = require("./routes/post_routes.js");
@@ -16,7 +17,9 @@ app.use((req, res, next) => {
 })
 
 app.listen(3003, () => {    
-    console.log("Server is running on port 3001");
+    console.log("Server is running on port 3003");
 })
 
 console.log()
+
+exports.app = app;
