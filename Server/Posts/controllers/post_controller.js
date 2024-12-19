@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const axios = require("../custom_axios");
 
 exports.post_by_id = (req, res) => {
-        axios.get("http://localhost:3000/posts/get/" + req.params.id)
+        axios.get("217.114.0.104:3000/posts/get/" + req.params.id)
         .then((response) => {
             console.log("Responce data \n" + response.data);
             res.status(200).json(response.data);
@@ -14,7 +14,7 @@ exports.post_by_id = (req, res) => {
 
 }
 exports.posts_by_user_id = (req, res) => {
-        axios.get("http://localhost:3000/posts/get/u/" + req.params.id)
+        axios.get("217.114.0.104:3000/posts/get/u/" + req.params.id)
         .then((response) => {
             console.log("Responce data \n" + response.data);
             res.status(200).json(response.data);
@@ -31,7 +31,7 @@ exports.create_post = (req, res) => {
             console.log('Error: ' + err);
             res.status(500).json(err);
         }
-        axios.post("http://localhost:3000/posts/create", req.body)
+        axios.post("217.114.0.104:3000/posts/create", req.body)
         .then((response) => {
             console.log("Responce data \n" + response.data);
             res.status(200).json(response.data);

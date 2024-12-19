@@ -6,7 +6,7 @@ export async function load({params}){
 }
 
 async function getData(id) {
-    const res = await fetch(`http://localhost:3000/users/get/${id}`);
+    const res = await fetch(`217.114.0.104:3000/users/get/${id}`);
 
     const user = await res.json(); // Используем json() для получения данных
 

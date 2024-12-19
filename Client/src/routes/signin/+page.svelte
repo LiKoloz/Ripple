@@ -11,7 +11,7 @@
     let password = $state('')
 
     async function signIn () {
-        let res = await fetch('http://localhost:3003/users/sign_in/default', {
+        let res = await fetch('217.114.0.104:3003/users/sign_in/default', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

@@ -4,7 +4,7 @@
     import { on } from 'svelte/events';
 
     async function checkJwt (jwt) {
-        return await fetch('http://localhost:3003/users/check_token',{
+        return await fetch('217.114.0.104:3003/users/check_token',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' 
