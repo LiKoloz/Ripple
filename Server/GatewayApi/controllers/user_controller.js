@@ -28,10 +28,11 @@ exports.get_user_by_email = (req, res) => {
 }
 
 exports.sign_in_default = async (req, res) => {
+    console.log("12333333333");
     axios.post("http://localhost:3001/sign_in/default", req.body)
     .then((response) => {
-        console.log('Responce data \n' + response.data);
-        res.status(200).json(response.body);
+        console.log('Responce data \n' );
+        res.status(200).json(JSON.stringify(response.data));
     })
     .catch(err => {
         console.log(err)
@@ -42,11 +43,25 @@ exports.sign_in_default = async (req, res) => {
 exports.sign_up_default = async (req, res) => {
     axios.post("http://localhost:3001/sign_up/default", req.body)
         .then((response) => {
+            console.log('Responce data \n' + JSON.stringify(response.data));
+            let user = JSON.parse(JSON.stringify(response.data));
+            res.status(200).json(user);
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        });
+}
+
+exports.check_token = async (req, res) => {
+    console.log(req)
+    axios.post("http://localhost:3001/sign_in/check_token", req.body)
+        .then((response) => {
             console.log('Responce data \n' + response.data);
             res.status(200).json(response.body);
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err)
             res.status(500).json(err)
         });
 }

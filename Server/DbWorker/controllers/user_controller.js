@@ -11,7 +11,7 @@ exports.add_user = async (req, res) =>{
         password: req.body.password,
         is_admin: req.body.is_admin
     })
-    .then(user => res.status(201).json(user))
+    .then((user) =>{ res.status(201).send(user.dataValues)})
     .catch(err => res.status(400).json('Error: ' + err));
 }
 

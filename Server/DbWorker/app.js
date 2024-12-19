@@ -1,10 +1,14 @@
 const db = require("./DbConnection.js");
+const cors = require("cors");
 const express = require("express");
 var bodyparser=require('body-parser');
 const app = express();
 
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.urlencoded());
+app.use(cors({
+    origin: "*",
+}));
 
 const user_router = require("./routes/user_router.js");
 const post_router = require("./routes/post_router.js");

@@ -1,6 +1,5 @@
 const express = require("express");
 var bodyparser=require('body-parser');
-const axios = require("axios").defaults;
 
 const app = express();
 
@@ -9,6 +8,7 @@ app.use(bodyparser.json());
 
 const sign_up_router = require("./routes/sign_up_routes.js");
 const sign_in_router = require("./routes/sign_in_routes.js");
+
 
 app.use("/sign_up", sign_up_router);
 app.use("/sign_in", sign_in_router);

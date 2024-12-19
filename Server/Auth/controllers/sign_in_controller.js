@@ -20,3 +20,13 @@ exports.sing_in_default = async (req, res) => {
             res.status(500).json(err)
         })
 }
+
+exports.check_token = async (req, res) => {
+    jwt.verify(req.body.token, "secret", (err, token) => {
+        if (err) {
+            console.log('Error: ' + err);
+            res.status(500).json(err);
+        }
+        res.status(200).json(token);
+    })
+}
