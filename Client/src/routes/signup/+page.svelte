@@ -16,7 +16,7 @@
             return
         }
         else {
-            await fetch('217.114.0.104:3003/users/sign_up/default', {
+            await fetch('http://217.114.0.104:3003/users/sign_up/default', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

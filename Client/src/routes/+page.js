@@ -5,7 +5,7 @@ export async function load({ params, fetch }) {
 }
 
 async function getPostsWithAutor(fetch) { // Принимаем fetch как аргумент
-    let res = await fetch("217.114.0.104:3000/posts/get/all");
+    let res = await fetch("http://217.114.0.104:3000/posts/get/all");
     if (res.ok) { 
         let posts = await res.json();
         return posts;

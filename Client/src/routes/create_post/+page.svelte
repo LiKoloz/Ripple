@@ -11,7 +11,7 @@
     let mainText = $state('')
 
     async function create_post() {
-        var res = await fetch('217.114.0.104:3003/posts/create', {
+        var res = await fetch('http://217.114.0.104:3003/posts/create', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
