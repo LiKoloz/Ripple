@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const bodyparser = require("body-parser");
 const app = express();
 
@@ -6,6 +7,9 @@ const post_router = require("./routes/post_router.js");
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
+app.use(cors({
+    origin: "*",
+}));
 
 app.use("/posts", post_router);
 

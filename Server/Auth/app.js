@@ -1,10 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 var bodyparser=require('body-parser');
 
 const app = express();
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
+app.use(cors({
+    origin: "*",
+}));
 
 const sign_up_router = require("./routes/sign_up_routes.js");
 const sign_in_router = require("./routes/sign_in_routes.js");
