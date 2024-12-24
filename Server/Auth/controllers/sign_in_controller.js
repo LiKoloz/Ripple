@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const axios = require("../custom_axios");
 
 exports.sing_in_default = async (req, res) => {
-    axios.get("http://217.114.0.104:3000/users/get/e/" + req.body.email)
+    axios.get("http://localhost:3000/users/get/e/" + req.body.email)
         .then((response) => {
             let user = response.data;
             jwt.sign({ user: user }, "secret", (err, token) => {

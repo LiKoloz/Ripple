@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     res.status(404).send("Not found");
 })
 
-app.listen(3002,'217.114.0.104', () => {
+app.listen(3002,'localhost', () => {
     console.log("Server is running on port 3002");
 })
 

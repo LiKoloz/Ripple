@@ -5,7 +5,7 @@ exports.sign_up_default = async (req, res) => {
     
     let jwtToken = '';
 
-    axios.post("http://217.114.0.104:3000/users/create", req.body)
+    axios.post("http://localhost:3000/users/create", req.body)
         .then(async (response) => {
             for (i in response.data) {
                 console.log(i + ' ' + response.data[i]);
