@@ -2,15 +2,14 @@
 export async function load({params}){
     let user = await getData(params.user_Id);
     console.log(user)
-    return {id: params.user_Id, email : user.email, nick: user.first_name, password: user.password};
+    return {id: params.user_Id, email : user.email, first_name: user.first_name, last_name: user.last_name,password: user.password};
 }
 
 async function getData(id) {
-    const res = await fetch(`http://217.114.0.104:3000/users/get/${id}`);
+    const res = await fetch(`http://localhost:3000/users/get/${id}`);
 
-    const user = await res.json(); // Используем json() для получения данных
+    const user = await res.json(); 
 
-    // Логируем полученные данные
     console.log(user);
 
     return user;
