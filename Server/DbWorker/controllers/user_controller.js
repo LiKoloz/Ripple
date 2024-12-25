@@ -1,6 +1,5 @@
 
 const db = require("../DbConnection.js");
-const  bcrypt = require('bcrypt');
 const { encryptPassword, decryptPassword } = require("../Services/hashFunc.js");
 
 exports.add_user = async (req, res) =>{
