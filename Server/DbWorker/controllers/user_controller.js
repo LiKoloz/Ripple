@@ -1,23 +1,31 @@
 
 const db = require("../DbConnection.js");
+const  bcrypt = require('bcrypt');
+const { encryptPassword, decryptPassword } = require("../Services/hashFunc.js");
+
 exports.add_user = async (req, res) =>{
-    console.log()
-    console.log(req.body);
-    console.log()
     db.User.create({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
-        password: req.body.password,
+        password: encryptPassword(req.body.password),
         is_admin: req.body.is_admin
     })
-    .then((user) =>{ res.status(201).send(user.dataValues)})
+    .then((user) =>{
+        let user_data = user.dataValues
+        user_data.password = decryptPassword(user_data.password);
+        res.status(201).send(user_data)
+        })
     .catch(err => res.status(400).json('Error: ' + err));
 }
 
 exports.get_user_by_email = (req, res) => {
     db.User.findOne({where:{email: req.params.email}} )
-    .then(user => res.json(user))
+    .then(user => {
+        let user_data = user
+        user_data.password = decryptPassword(user_data.password);
+        res.json(user_data)
+    })
     .catch(err => res.status(400).json('Error: ' + err));
 }
 

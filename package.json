@@ -2,13 +2,13 @@
     "name": "multi-project",
     "version": "1.0.0",
     "scripts": {
-      "start:db": "node ./Server/DbWorker/app.js",
-      "start:auth": "node ./Server/Auth/app.js",
-      "start:posts": "node ./Server/Posts/app.js",
-    "start:gateway": "node ./Server/GatewayApi/app.js",
-      "start": "concurrently \"npm run start:db\" \"npm run start:auth\" \"npm run start:posts\" \"npm run start:gateway\""
+        "start:db": "node ./Server/DbWorker/app.js",
+        "start:auth": "node ./Server/Auth/app.js",
+        "start:posts": "node ./Server/Posts/app.js",
+        "start:gateway": "node ./Server/GatewayApi/app.js",
+        "start": "concurrently \"npm run start:db\" \"npm run start:auth\" \"npm run start:posts\" \"npm run start:gateway\""
     },
     "dependencies": {
-      "concurrently": "^6.0.0"
+        "concurrently": "^6.0.0"
     }
-  }
+}

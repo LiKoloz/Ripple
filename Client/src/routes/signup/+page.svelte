@@ -11,9 +11,11 @@
     let second_name = $state('')
     let password = $state('')
     let email = $state((Math.random() + 10000).toString(36).substring(7) + '@gmail.com')
+    let code = $state('')
 
    
     async function registration () {
+        if(code == "1239") console.log("Вы админ!")
         if(!first_name || !password) {
             alert('Заполните все поля!')
             return
@@ -29,7 +31,7 @@
                     'last_name': second_name,
                     'email': email,
                     'password': password,
-                    'is_admin': 'true'
+                    'is_admin': code == "1239" ? "true" : "false"
                 })
             }).then( async (response) => {
                 if (response.ok) {
@@ -76,6 +78,12 @@
             bind:value={password} 
             required
             placeholder="Введите пароль"></Input>
+    </FormGroup>
+    <FormGroup class="mt-3">
+        <h3>Пригасительный код (если имеется)</h3>
+        <Input class="area mt-2" 
+            bind:value={code} 
+            placeholder="Введите код"></Input>
     </FormGroup>
 </Form>
 

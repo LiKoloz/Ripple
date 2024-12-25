@@ -53,7 +53,7 @@ describe("Post Tests", function() {
     })
 
     it("Should return post", function(done) {
-        request(app).get('/posts/get/0').expect(200)
+        request(app).get('/posts/get/1').expect(200)
         .end(function (err, res) {
             if (err) throw err;
             console.log(res.body);
